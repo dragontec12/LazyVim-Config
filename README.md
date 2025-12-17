@@ -11,3 +11,4 @@ Config of [LazyVim](https://github.com/LazyVim/LazyVim).
 ## Plugins
 
 - ["benomahony/uv.nvim"](https://www.github.com/benomahony/uv.nvim)
+- ["pxwg/math-conceal.nvim"](https://www.github.com/pxwg/math-conceal.nvim)
