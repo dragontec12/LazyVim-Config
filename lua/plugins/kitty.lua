@@ -1,4 +1,5 @@
 return {
+    enabled = false,
     "MunsMan/kitty-navigator.nvim",
     build = {
         "cp navigate_kitty.py ~/.config/kitty",
