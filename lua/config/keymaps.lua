@@ -4,42 +4,42 @@
 
 -- Keymaps for Documentation search
 local actions = {
-  {
-    name = "man",
-    action = function(word)
-      vim.cmd("Man " .. word)
-    end,
-  },
-  {
-    name = "devdocs",
-    action = function(word)
-      vim.fn.jobstart({ "open", "https://devdocs.io/#q=" .. word })
-    end,
-  },
-  {
-    name = "google",
-    action = function(word)
-      vim.fn.jobstart({ "open", "https://www.google.com/search?q=" .. word })
-    end,
-  },
+    {
+        name = "man",
+        action = function(word)
+            vim.cmd("Man " .. word)
+        end,
+    },
+    {
+        name = "devdocs",
+        action = function(word)
+            vim.fn.jobstart({ "open", "https://devdocs.io/#q=" .. word })
+        end,
+    },
+    {
+        name = "google",
+        action = function(word)
+            vim.fn.jobstart({ "open", "https://www.google.com/search?q=" .. word })
+        end,
+    },
 }
 
 local function choose_doc()
-  local word = vim.fn.expand("<cword>")
-  if not word or word == "" then
-    vim.notify("No word selected", vim.log.levels.WARN)
-    return
-  end
-  vim.ui.select(actions, {
-    prompt = "Choose documentation",
-    format_item = function(item)
-      return item.name
-    end,
-  }, function(choice)
-    if choice and choice.action then
-      choice.action(word)
+    local word = vim.fn.expand("<cword>")
+    if not word or word == "" then
+        vim.notify("No word selected", vim.log.levels.WARN)
+        return
     end
-  end)
+    vim.ui.select(actions, {
+        prompt = "Choose documentation",
+        format_item = function(item)
+            return item.name
+        end,
+    }, function(choice)
+        if choice and choice.action then
+            choice.action(word)
+        end
+    end)
 end
 
 vim.keymap.del("n", "<leader>K")
